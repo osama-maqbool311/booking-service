@@ -24,7 +24,7 @@ public class ShowController {
 
     @POST
     @Path("/add")
-    public Response createShows(List<ShowCreateRequest> showCreateRequests) {
+    public Response createShows(final List<ShowCreateRequest> showCreateRequests) {
         List<Show> shows = showService.createShows(showCreateRequests);
         return Response.status(Response.Status.CREATED).entity(shows).build();
     }

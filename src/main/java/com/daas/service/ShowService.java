@@ -10,6 +10,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Map;
@@ -18,13 +19,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @ApplicationScoped
-@AllArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class ShowService {
 
-    @Inject
     private final ShowRepository showRepository;
-
-    @Inject
     private final SeatRepository seatRepository;
 
     public List<Show> getAllShows() {
@@ -32,7 +30,7 @@ public class ShowService {
     }
 
     @Transactional
-    public List<Show> createShows(List<ShowCreateRequest> requests) {
+    public List<Show> createShows(final List<ShowCreateRequest> requests) {
 
         List<Show> shows = requests.stream()
                 .map(ShowTranslator::toEntity)

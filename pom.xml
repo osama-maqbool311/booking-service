@@ -77,6 +77,11 @@
             <artifactId>quarkus-undertow</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-flyway</artifactId>
+        </dependency>
+
         <!-- Test dependencies -->
         <dependency>
             <groupId>io.quarkus</groupId>

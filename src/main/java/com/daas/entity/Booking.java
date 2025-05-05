@@ -19,10 +19,10 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email", nullable = false, length = 255)
+    @Column(name = "email", nullable = false, length = 255, unique = true)
     private String email;
 
-    @Column(name = "mobile", nullable = false, length = 50)
+    @Column(name = "mobile", nullable = false, length = 50, unique = true)
     private String mobile;
 
     @ManyToOne

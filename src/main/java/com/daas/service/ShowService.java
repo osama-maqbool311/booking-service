@@ -1,7 +1,7 @@
 package com.daas.service;
 
-import com.daas.dao.SeatRepository;
-import com.daas.dao.ShowRepository;
+import com.daas.repository.SeatRepository;
+import com.daas.repository.ShowRepository;
 import com.daas.dto.request.ShowCreateRequest;
 import com.daas.entity.Seat;
 import com.daas.entity.Show;
@@ -9,6 +9,7 @@ import com.daas.translator.ShowTranslator;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.Map;
@@ -17,13 +18,14 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @ApplicationScoped
+@AllArgsConstructor
 public class ShowService {
 
     @Inject
-    ShowRepository showRepository;
+    private final ShowRepository showRepository;
 
     @Inject
-    SeatRepository seatRepository;
+    private final SeatRepository seatRepository;
 
     public List<Show> getAllShows() {
         return showRepository.listAll();
@@ -64,5 +66,10 @@ public class ShowService {
                             });
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void deleteShow(Long id) {
+            showRepository.deleteById(id);
     }
 }

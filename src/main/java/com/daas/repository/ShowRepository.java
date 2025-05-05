@@ -1,6 +1,5 @@
-package com.daas.dao;
+package com.daas.repository;
 
-import com.daas.dto.request.ShowCreateRequest;
 import com.daas.entity.Show;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;

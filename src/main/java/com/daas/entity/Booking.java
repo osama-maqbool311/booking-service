@@ -2,9 +2,16 @@ package com.daas.entity;
 
 import com.daas.enums.BookingStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "bookings")
 public class Booking {
@@ -39,82 +46,4 @@ public class Booking {
             inverseJoinColumns = @JoinColumn(name = "seat_id")
     )
     private List<Seat> seats;
-
-    public Booking() {
-    }
-
-    public Booking(Long id, String email, String mobile, Show show, Integer seatCount, BookingStatus status, LocalDateTime bookingTime, List<Seat> seats) {
-        this.id = id;
-        this.email = email;
-        this.mobile = mobile;
-        this.show = show;
-        this.seatCount = seatCount;
-        this.status = status;
-        this.bookingTime = bookingTime;
-        this.seats = seats;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public Show getShow() {
-        return show;
-    }
-
-    public void setShow(Show show) {
-        this.show = show;
-    }
-
-    public Integer getSeatCount() {
-        return seatCount;
-    }
-
-    public void setSeatCount(Integer seatCount) {
-        this.seatCount = seatCount;
-    }
-
-    public BookingStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(BookingStatus status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getBookingTime() {
-        return bookingTime;
-    }
-
-    public void setBookingTime(LocalDateTime bookingTime) {
-        this.bookingTime = bookingTime;
-    }
-
-    public List<Seat> getSeats() {
-        return seats;
-    }
-
-    public void setSeats(List<Seat> seats) {
-        this.seats = seats;
-    }
 }

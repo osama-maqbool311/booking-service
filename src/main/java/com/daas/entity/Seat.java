@@ -1,7 +1,14 @@
 package com.daas.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "seats")
 public class Seat {
@@ -14,50 +21,9 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name = "show_id")
+    @JsonBackReference
     private Show show;
 
     @Column(name = "booked", nullable = false)
     private boolean booked;
-
-    public Seat() {
-    }
-
-    public Seat(Long id, String seatNumber, Show show, boolean booked) {
-        this.id = id;
-        this.seatNumber = seatNumber;
-        this.show = show;
-        this.booked = booked;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    public Show getShow() {
-        return show;
-    }
-
-    public void setShow(Show show) {
-        this.show = show;
-    }
-
-    public boolean isBooked() {
-        return booked;
-    }
-
-    public void setBooked(boolean booked) {
-        this.booked = booked;
-    }
 }

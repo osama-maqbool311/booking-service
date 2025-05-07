@@ -65,4 +65,8 @@ public class BookingService {
         });
         return booking;
     }
+
+    public Booking bookingById(Long id) {
+        return bookingRepository.listAll().getFirst();
+    }
 }

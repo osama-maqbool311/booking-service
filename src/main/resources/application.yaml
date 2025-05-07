@@ -13,7 +13,7 @@ quarkus:
     database:
       generation: none
     log:
-      sql: true
+      sql: false
 
   flyway:
     migrate-at-start: true
@@ -29,6 +29,7 @@ quarkus:
     console:
       color: true
       enable: true
+    level: INFO
 
   quartz:
     jdbc:

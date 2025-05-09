@@ -8,7 +8,6 @@ quarkus:
       url: jdbc:postgresql://localhost:5432/booking_db
       driver: org.postgresql.Driver
 
-
   hibernate-orm:
     database:
       generation: none
@@ -37,3 +36,12 @@ quarkus:
     store-type: jdbc-cmt
     misfire-policy:
       task-job: ignore-misfire-policy
+
+  stork:
+    payment-service:
+      service-discovery:
+        type: consul
+        consul-host: localhost
+        consul-port: 8500
+      load-balancer:
+        type: round-robin
